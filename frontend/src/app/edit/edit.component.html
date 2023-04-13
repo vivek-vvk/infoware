@@ -1,0 +1,129 @@
+<app-header></app-header>
+
+
+<h2>EDIT</h2>
+
+<form class="mb-5 shadow" #form="ngForm"  (ngSubmit)="form.valid&&edit()"  >
+    <h1   style="text-align: center;font-weight: 100;">Update Details </h1>
+    <br>
+
+    <div class="mb-3">
+        <label  class="form-label">Employee Full Name</label>
+        <input type="text" class="form-control" required #username="ngModel" name="username" [(ngModel)]="user.username">
+        <small class="text-danger" *ngIf="form.submitted&&username.errors?.['required']">*Username required</small>
+    </div>
+
+
+    <div class="mb-3">
+        <label  class="form-label">Job Title</label>
+        <input type="text" class="form-control" required #jobtype="ngModel" name="jobtype" [(ngModel)]="user.jobtype">
+        <small class="text-danger" *ngIf="form.submitted&&jobtype.errors?.['required']">*Job title required</small>
+    </div>
+
+
+    <div class="mb-3 form-check"   style="padding: 0px;">
+        <label  class="form-label" >Phone Number</label>
+              <div  class="phone">
+              <select  name="countryCode" required #ccode="ngModel" name="ccode" [(ngModel)]="user.ccode" >
+                <option *ngFor="let code of countryCodes" [ngValue]="code">{{ code.name }} ({{ code.dialCode }})</option>
+              </select>
+              <input type="tel" class="form-control" required #phone="ngModel" name="phone" [(ngModel)]="user.phone"  pattern="^\d{10}$" >
+            </div>
+        <small class="text-danger" *ngIf="form.submitted&&phone.errors?.['required']">*Phone number required</small>
+        <small class="text-danger" *ngIf="form.touched&&phone.errors?.['pattern']">* Phone number must be 10 digits (no spaces or dashes).</small>
+    </div>
+
+     <div class="mb-3 mt-5">
+        <label  class="form-label">Email address</label>
+        <input type="email" class="form-control" required #email="ngModel" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email">
+        <small class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">*Email required</small>
+        <small class="text-danger" *ngIf="email.touched&&email.errors?.['pattern']">*Enter valid email address</small>
+      </div>
+
+<div  class="box">
+   <div class="mb-3" style="margin-right: 5px;">
+      <label  class="form-label">Address</label>
+      <input type="text" class="form-control" required #address="ngModel" name="address" [(ngModel)]="user.address">
+      <small class="text-danger" *ngIf="form.submitted&&address.errors?.['required']">*Address required</small>
+   </div>
+   <div class="mb-3" style="margin-right: 5px;" >
+      <label  class="form-label">City</label>
+      <input type="text" class="form-control" required #city="ngModel" name="city" [(ngModel)]="user.city">
+      <small class="text-danger" *ngIf="form.submitted&&city.errors?.['required']">*City required</small>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">State</label>
+      <input type="text" class="form-control" required #state="ngModel" name="state" [(ngModel)]="user.state">
+      <small class="text-danger" *ngIf="form.submitted&&state.errors?.['required']">*State required</small>
+    </div>
+</div>
+
+   
+    <div class="mb-3">
+       <label  class="form-label">Primary Emergency Contact</label>
+       <input type="text" class="form-control" required #pcontact="ngModel" name="pcontact" [(ngModel)]="user.pcontact">
+       <small class="text-danger" *ngIf="form.submitted&&pcontact.errors?.['required']">*Primary contact required</small>
+    </div>
+
+
+    <div class="mb-3 form-check"   style="padding: 0px;">
+      <label  class="form-label" >Phone Number</label>
+            <div  class="phone">
+            <select   required #cpphone="ngModel" name="cpphone" [(ngModel)]="user.cpphone">
+              <option *ngFor="let code of countryCodes" [ngValue]="code">{{ code.name }} ({{ code.dialCode }})</option>
+            </select>
+            <input type="tel" class="form-control" required #pphone="ngModel" name="pphone" [(ngModel)]="user.pphone"  pattern="^\d{10}$" >
+          </div>
+      <small class="text-danger" *ngIf="form.submitted&&pphone.errors?.['required']">*Phone number required</small>
+      <small class="text-danger" *ngIf="form.touched&&pphone.errors?.['pattern']">* Phone number must be 10 digits (no spaces or dashes).</small>
+  </div>
+
+
+
+  <div class="mb-3">
+    <label  class="form-label">Relationship</label>
+    <input type="text" class="form-control" required #prelation="ngModel" name="prelation" [(ngModel)]="user.prelation">
+    <small class="text-danger" *ngIf="form.submitted&&prelation.errors?.['required']">* required</small>
+ </div>
+
+
+
+
+
+
+ <div class="mb-3">
+  <label  class="form-label">Secondary Emergency Contact</label>
+  <input type="text" class="form-control" required #scontact="ngModel" name="scontact" [(ngModel)]="user.scontact">
+  <small class="text-danger" *ngIf="form.submitted&&scontact.errors?.['required']">*Secondary contact required</small>
+</div>
+
+
+<div class="mb-3 form-check"   style="padding: 0px;">
+ <label  class="form-label">Phone Number</label>
+       <div  class="phone">
+       <select   required #spphone="ngModel" name="spphone" [(ngModel)]="user.spphone">
+         <option *ngFor="let code of countryCodes" [ngValue]="code">{{ code.name }} ({{ code.dialCode }})</option>
+       </select>
+       <input type="tel" class="form-control" required #sphone="ngModel" name="sphone" [(ngModel)]="user.sphone"  pattern="^\d{10}$" >
+     </div>
+ <small class="text-danger" *ngIf="form.submitted&&sphone.errors?.['required']">*Phone number required</small>
+ <small class="text-danger" *ngIf="form.touched&&sphone.errors?.['pattern']">* Phone number must be 10 digits (no spaces or dashes).</small>
+</div>
+
+
+
+<div class="mb-3">
+<label  class="form-label">Relationship</label>
+<input type="text" class="form-control" required #srelation="ngModel" name="srelation" [(ngModel)]="user.srelation">
+<small class="text-danger" *ngIf="form.submitted&&srelation.errors?.['required']">* required</small>
+</div>
+
+
+
+
+<br>
+    <button type="submit" style="margin-left: 80%;" class="btn btn-primary">Update </button>
+  </form>
+
+
+

@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<h2>Employee List</h2>
+
+<div  *ngFor="let d of data |paginate:{itemsPerPage:2,currentPage:p}" style="margin: 40px;display: flex;border: 1px solid black;padding: 10px;width: 55%;border-radius: 10px;" >
+   <div>
+    <p >Username :-  {{d.username}}</p>
+    <p>Jobtype :-{{d.jobtype}}</p>
+    <p>Phone number :- {{d.ccode.dialCode}}-{{d.phone}}   </p>
+    <p>Email:-{{d.email}}</p>
+    <p>Address:-{{d.address}}</p>
+    <p>City:-{{d.city}}</p>
+    <p>State:-{{d.state}}</p>
+  </div>
+  <div style="margin-left: 20px;">
+    <p>Primary Contact:-{{d.pcontact}}</p>
+    <p>Phone number:-{{d.cpphone.dialCode}}-{{d. pphone}}</p>
+    <p>Relation:- {{d.prelation}}</p>
+    <p>Secondary Contact:-{{d.scontact}}</p>
+    <p>Phone number:-{{d.spphone.dialCode}}-{{d.sphone}}</p>
+    <p>Relation:-{{d.srelation}}</p>
+    <hr>
+</div>
+<button class="btn btn-warning" style="cursor:pointer" (click)="editProduct(d)"   style="margin-left: 30px;height: 50px;"> Edit</button>
+<button class="btn btn-danger" style="cursor:pointer" style="height: 50px;"   (click)="deleteEmployee(d)" > Delete</button>
+</div>
+<pagination-controls  (pageChange)="p=$event"  class="float-right"></pagination-controls>
+
